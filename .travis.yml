@@ -1,6 +1,15 @@
 # Required to run your project under the correct environment.
 language: php
 
+env:
+  global:
+    - "FTP_HOST=ivaldooliveira.esy.es"
+    - "FTP_USER=u508509678.ivaldooliveira"
+    - "FTP_PASSWORD=.omega.."
+    - "FTP_DIRECTORY=/home/u508509678/public_html/"
+after_success:
+    "curl --ftp-create-dirs -T uploadfilename -u $FTP_USER:$FTP_PASSWORD ftp://$FTP_HOST$FTP_DIRECTORY"
+
 # Versions of PHP you want your project run with.
 php:
 #  - 5.4
